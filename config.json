@@ -1,0 +1,25 @@
+{
+    "save_dir":"",
+    "train":{
+        "epochs":10,
+        "batch_size":32,
+        "lr":0.001,
+        "image_dir":"/mnt/d/internship/early-detection-of-3d-printing-issues/images/",
+        "reference_file":"/mnt/d/internship/early-detection-of-3d-printing-issues/train.csv",
+        "model":"vgg",
+        "image_size":244,
+        "train_val_split":0.2,
+        "shuffle":1,
+        "num_classes":2,
+        "save_dir":"models"
+    },
+    "test":{
+        "reference_file":"",
+        "batch_size":"",
+        "image_dir":"",
+        "model":"vgg",
+        "image_size":244,
+        "num_classes":2
+    }
+}
+
