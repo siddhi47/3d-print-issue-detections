@@ -10,7 +10,7 @@ import torchvision.transforms as transforms
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.utils import train_val_split, calc_metrics, CDataset, load_config
-from src.architectures import Net_VGG
+from src.models import models
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
