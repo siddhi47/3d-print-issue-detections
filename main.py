@@ -1,21 +1,20 @@
+import os
+import csv
+import sys
 import torch
-import torchvision.transforms as transforms
+import json
+import argparse
 import numpy as np
 import torch.nn as nn
-
 import torch.optim as optim
+import torchvision.transforms as transforms
 
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-import os
-import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from src.utils import train_val_split, CDataset, calc_metrics
 from src.architectures import Net_VGG
-import json
-import argparse
-import csv
+
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def load_config(config_path, train=True):
     with open(config_path) as f:
