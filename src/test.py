@@ -1,27 +1,18 @@
 import os
-import csv
 import sys
+import csv
 import torch
-import json
-import argparse
+import numpy as np
+import torch.nn as nn
+import torch.optim as optim
+import torchvision.transforms as transforms
 
 
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
-from src.train import train, train_args
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from src.utils import train_val_split, calc_metrics, CDataset, load_config
+from src.architectures import Net_VGG
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
-
-def main_args():
-    parser = argparse.ArgumentParser(description="Train a model")
-    parser.add_argument(
-        "--type",
-        type=str,
-        default="train",
-        help="train or test",
-    )
-    return parser
-
 
 
 def test_args(parser):
@@ -73,24 +64,3 @@ def test(test_args):
     pass
 
 
-def main(parser):
-    args = parser.parse_args()
-    if args.type == "train":
-        train(parser)
-    elif args.type == "test":
-        pass
-        # test(args)
-    else:
-        print("Invalid type")
-
-
-if __name__ == "__main__":
-    parser = main_args()
-    args = parser.parse_args()
-    if args.type == "train":
-        parser = train_args(parser)
-    elif args.type == "test":
-        parser = test_args(parser)
-    else:
-        print("Invalid type")
-    main(parser)

@@ -1,6 +1,7 @@
 import os
 import cv2
 import torch
+import json
 import numpy as np
 import pandas as pd
 from torch.utils.data import Dataset, DataLoader
@@ -54,3 +55,14 @@ def calc_metrics(outputs, labels):
     precision, recall, f1, _ = precision_recall_fscore_support(labels, outputs, average='macro')
     cm = confusion_matrix(labels, outputs)
     return acc, precision, recall, f1, cm
+
+def load_config(config_path, train=True):
+    with open(config_path) as f:
+        config = json.load(f)
+    if train:
+        config = config["train"]
+    else:
+        config = config["test"]
+    return config
+
+
