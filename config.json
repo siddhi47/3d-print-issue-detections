@@ -14,12 +14,13 @@
         "save_dir":"models"
     },
     "test":{
-        "reference_file":"",
-        "batch_size":"",
-        "image_dir":"",
+        "reference_file":"/mnt/d/internship/early-detection-of-3d-printing-issues/test.csv",
+        "batch_size":64,
+        "image_dir":"/mnt/d/internship/early-detection-of-3d-printing-issues/images/",
         "model":"vgg",
-        "image_size":128,
-        "num_classes":2
+        "image_size":256,
+        "num_classes":2,
+        "save_dir":"models"
     }
 }
 

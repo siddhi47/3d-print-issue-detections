@@ -29,8 +29,7 @@ def main(parser):
     if args.type == "train":
         train(parser)
     elif args.type == "test":
-        pass
-        # test(args)
+         test(parser)
     else:
         print("Invalid type")
 

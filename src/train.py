@@ -10,10 +10,10 @@ import torchvision.transforms as transforms
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from src.utils import train_val_split, calc_metrics, CDataset, load_config
-from src.architectures import Net_VGG
 from src.models import models
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
 
 def train_args(parser):
     train_config = load_config("config.json", train=True)
@@ -127,7 +127,8 @@ def train(train_args):
 
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-    if not os.path.exists('results'): os.mkdir('results')
+    if not os.path.exists("results"):
+        os.mkdir("results")
 
     for epoch in range(train_args.epochs):
         train_acc = []
@@ -177,7 +178,6 @@ def train(train_args):
                     np.mean(train_f1s),
                 ]
             )
-        
 
         # save model
         os.makedirs(os.path.join(PROJECT_DIR, train_args.save_dir), exist_ok=True)
@@ -219,7 +219,7 @@ def train(train_args):
                             np.mean(val_acc),
                             np.mean(val_precisions),
                             np.mean(val_recalls),
-                            np.mean(val_f1s)
+                            np.mean(val_f1s),
                         ]
                     )
 
@@ -231,7 +231,7 @@ def train(train_args):
                 )
     print("Finished Training")
 
+
 if __name__ == "__main__":
     parser = train_parser()
     train(parser)
-
