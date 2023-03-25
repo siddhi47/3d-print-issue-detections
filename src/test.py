@@ -91,15 +91,15 @@ def test(test_args):
     predictions = []
     with torch.no_grad():
         for i, data in enumerate(test_loader):
-            inputs, _  = data[0].to(device), data[1].to(device)
+            inputs, _  = data[0].to(device)
 
             outputs = net(inputs)
             outputs = torch.argmax(outputs, dim=1)
             predictions.extend(outputs.cpu().numpy())
             print(f"Batch {i} out of {len(test_loader)}")
-    print(predictions)
     test_ref = pd.read_csv(test_args.reference_file)
-    test_ref["label"] = predictions
+    test_ref.drop(columns=["printer_id","print_id"], inplace=True)
+    test_ref["has_under_extrusion"] = predictions
     test_ref.to_csv(f"results/{test_args.model}_test.csv", index=False)
 
 if __name__ == "__main__":

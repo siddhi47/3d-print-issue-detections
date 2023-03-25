@@ -10,4 +10,5 @@ models = {
     "inception": Net_Inception,
     "vgg": Net_VGG,
     "mobilenet": Net_MobileNet,
+    "vit": Net_ViT
 }
