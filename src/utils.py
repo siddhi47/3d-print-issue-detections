@@ -17,6 +17,7 @@ class CDataset(Dataset):
         transform=None,
     ):
         self.img_labels = pd.read_csv(annotations_file)
+        self.img_labels = self.img_labels.sample(frac=1,random_state=42)
         self.img_dir = img_dir
         self.transform = transform
 
@@ -65,6 +66,7 @@ def calc_metrics(outputs, labels):
 
 
 def load_config(config_path, train=True):
+    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), config_path)
     with open(config_path) as f:
         config = json.load(f)
     if train:

@@ -91,7 +91,7 @@ def test(test_args):
     predictions = []
     with torch.no_grad():
         for i, data in enumerate(test_loader):
-            inputs, _  = data[0].to(device)
+            inputs  = data[0].to(device)
 
             outputs = net(inputs)
             outputs = torch.argmax(outputs, dim=1)

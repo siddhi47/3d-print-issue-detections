@@ -128,7 +128,7 @@ class Net_ViT(torch.nn.Module):
         This function initializes the model
         """
         super(Net_ViT, self).__init__()
-        self.model = torch.hub.load('facebookresearch/deit:main', 'deit_base_patch16_224', pretrained=True)
+        self.model = torch.hub.load('facebookresearch/deit:main', 'deit_base_patch16_384', pretrained=True)
         self.model.head = torch.nn.Linear(768, num_classes)
 
     def forward(self, x):

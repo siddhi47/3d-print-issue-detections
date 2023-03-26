@@ -2,23 +2,24 @@
     "save_dir":"",
     "train":{
         "epochs":10,
-        "batch_size":16,
+        "batch_size":4,
         "lr":0.001,
         "image_dir":"/mnt/d/internship/early-detection-of-3d-printing-issues/images/",
         "reference_file":"/mnt/d/internship/early-detection-of-3d-printing-issues/train.csv",
         "model":"vit",
-        "image_size":224,
+        "image_size":384,
         "train_val_split":0.2,
-        "shuffle":1,
+        "shuffle":true,
         "num_classes":2,
-        "save_dir":"models"
+        "save_dir":"models",
+        "validation":false
     },
     "test":{
         "reference_file":"/mnt/d/internship/early-detection-of-3d-printing-issues/test.csv",
         "batch_size":64,
         "image_dir":"/mnt/d/internship/early-detection-of-3d-printing-issues/images/",
         "model":"vgg",
-        "image_size":256,
+        "image_size":300,
         "num_classes":2,
         "save_dir":"models"
     }
