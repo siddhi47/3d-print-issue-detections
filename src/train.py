@@ -197,7 +197,7 @@ def train(train_args):
 
         # save model
         os.makedirs(os.path.join(PROJECT_DIR, train_args.save_dir), exist_ok=True)
-        torch.save(net.state_dict(), model_path)
+        torch.save(net.state_dict(), model_path+str(epoch))
 
         if train_args.validation:
             if epoch % 1 == 0:

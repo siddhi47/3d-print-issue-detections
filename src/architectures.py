@@ -136,5 +136,7 @@ class Net_ViT(torch.nn.Module):
         This function defines the forward pass of the model
         """
         x = self.model(x)
+        # add dropout
+        x = F.dropout(x, p=0.5, training=self.training)
         return x
 
